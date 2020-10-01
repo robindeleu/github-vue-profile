@@ -41,8 +41,8 @@
       <HelloWorld v-show="false"/>
 
     <v-container v-if="profile">
-      <v-row>
-      <v-col cols="12">
+      <v-row justify="center">
+      <v-col cols="4">
         <h2>{{ profile.login }}</h2>
         <h3> The real name is: {{profile.name}}</h3>
       </v-col>
@@ -50,32 +50,32 @@
     </v-container>
 
     <v-container v-if="profile">
-      <v-row>
-      <v-col cols="12">
-        <v-img scr="profile.avatar_url"></v-img>
+      <v-row justify="center">
+      <v-col cols="4">
+        <v-img :src="profile.avatar_url" contain></v-img>
       </v-col>
     </v-row>
     </v-container>
     
     <v-container v-if="profile">
-      <v-row>
-      <v-col cols="12">
+      <v-row justify="center">
+      <v-col cols="2">
         <p>Works in {{profile.company}}</p>
       </v-col>
     </v-row>
     </v-container>
 
     <v-container v-if="profile">
-      <v-row>
-      <v-col cols="12">
+      <v-row justify="center">
+      <v-col cols="4">
         <p>This is the ammount of followers: {{profile.followers}}</p>
       </v-col>
     </v-row>
     </v-container>
   
     <v-container v-if="profile">
-      <v-row>
-      <v-col cols="12">
+      <v-row justify="center">
+      <v-col cols="4">
         <p>This is the ammount of repository's: {{profile.public_repos}}</p>
       </v-col>
     </v-row>
@@ -93,7 +93,8 @@
 
 <script>
 import HelloWorld from './components/HelloWorld';
-import axios from 'axios';
+import UsersAPI from './api/users';
+//import axios from 'axios';
 export default {
   name: 'App',
 
@@ -109,7 +110,7 @@ export default {
     fetch(){
       console.log("Fetching profile ....")
 
-      axios.get('http://localhost:3000/users/robindeleu').then(response => {
+    UsersAPI.getUser('robindeleu').then(response => {
         console.log(response);
         this.profile = response.data;
       }).catch(e => {
@@ -117,6 +118,15 @@ export default {
       }
         
       )
+/*
+      axios.get('http://localhost:3000/users/robindeleu').then(response => {
+        console.log(response);
+        this.profile = response.data;
+      }).catch(e => {
+        console.log(e)
+      }
+        
+      )*/
     }
   },
 };
