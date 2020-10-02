@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
+      color=#03A9F4
       dark
     >
       <div class="d-flex align-center">
@@ -59,7 +59,7 @@
     
     <v-container v-if="profile">
       <v-row justify="center">
-      <v-col cols="2">
+      <v-col cols="4">
         <p>Works in {{profile.company}}</p>
       </v-col>
     </v-row>
@@ -79,11 +79,18 @@
         <p>This is the ammount of repository's: {{profile.public_repos}}</p>
       </v-col>
     </v-row>
-    </v-container>     
+    </v-container> 
 
-    <v-row>
-      <v-col cols="6">
-        <v-btn block primary @click="fetch">Fetch Profile</v-btn>
+    <v-row justify="center">
+      <v-col cols="4">
+        <input id="name" v-model="name" type="text" name="name">
+        <p>You're searching for {{name}}</p>
+      </v-col>
+    </v-row>
+
+    <v-row justify="center">
+      <v-col cols="4">
+        <v-btn color=#03A9F4 elevation="2" rounded @click="fetch(name)">Fetch Profile</v-btn>
       </v-col>
     </v-row>
 
@@ -103,14 +110,15 @@ export default {
   },
 
   data: () => ({
-    profile: null
+    profile: null,
+    name: ''
   }),
   
   methods:{
-    fetch(){
-      console.log("Fetching profile ....")
-
-    UsersAPI.getUser('robindeleu').then(response => {
+    fetch(name){
+    console.log("Fetching profile ....");
+    console.log(name);
+    UsersAPI.getUser(name).then(response => {
         console.log(response);
         this.profile = response.data;
       }).catch(e => {
