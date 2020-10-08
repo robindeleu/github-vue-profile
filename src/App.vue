@@ -39,6 +39,14 @@
 
     <v-main>
       <HelloWorld v-show="false"/>
+        <v-row justify="center">
+          <v-col cols="4">
+            <input id="name" v-model="name" type="text" name="name" class="grey" >
+            <v-btn color=#03A9F4 elevation="2" rounded @click="fetch(name)">Fetch Profile</v-btn>
+          </v-col>
+        </v-row>
+
+   
 <v-card  v-if="profile"
     class="mx-auto"
     color="#26c6da"
@@ -46,7 +54,7 @@
     max-width="400"
   >
     <v-card-title>
-      <span class="title font-weight-light">{{ profile.login }}</span>
+      <span class="title font-weight-light">{{ profile.login }}, works @{{profile.company}}</span>
     </v-card-title>
 
     <v-card-text class="headline font-weight-bold">
@@ -86,17 +94,7 @@
   </v-card>
     
     
-    <v-row justify="center">
-      <v-col cols="4">
-        <input id="name" v-model="name" type="text" name="name" class="grey" >
-      </v-col>
-    </v-row>
-
-    <v-row justify="center">
-      <v-col cols="4">
-        <v-btn color=#03A9F4 elevation="2" rounded @click="fetch(name)">Fetch Profile</v-btn>
-      </v-col>
-    </v-row>
+ 
     
 
     </v-main>
