@@ -40,8 +40,10 @@
     <v-main>
       <HelloWorld v-show="false"/>
         <v-row justify="center">
-          <v-col cols="4">
+          <v-col cols="2">
             <input id="name" v-model="name" type="text" name="name" class="grey" >
+          </v-col>
+          <v-col cols="2">
             <v-btn color=#03A9F4 elevation="2" rounded @click="fetch(name)">Fetch Profile</v-btn>
           </v-col>
         </v-row>
