@@ -2,49 +2,39 @@
   <v-app>
     <v-app-bar
       app
-      color=#03A9F4
+      color=#26c6da
       dark
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+    
+      <div class="d-flex align-center" v-if="profile">
+        <v-col>
+        <v-avatar size="45">
+          <v-img
+            alt="Avatar user"
+            contain
+            :src="profile.avatar_url"
+            transition="scale-transition"
+          />
+        </v-avatar>
+        </v-col>
+        <span class="mr-2">Hello, you're looking for the github profile of {{profile.name}}</span>
       </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
     </v-app-bar>
 
     <v-main>
       <HelloWorld v-show="false"/>
         <v-row justify="center">
           <v-col cols="2">
-            <input id="name" v-model="name" type="text" name="name" class="grey" >
-          </v-col>
-          <v-col cols="2">
-            <v-btn color=#03A9F4 elevation="2" rounded @click="fetch(name)">Fetch Profile</v-btn>
+            <v-text-field
+            hide-details
+            placeholder="Type profile name"
+            append-icon="mdi-magnify"
+            single-line
+            clearable
+            @keyup.enter="fetch(name)"
+            @click:append="fetch(name)"
+            id="name" v-model="name" type="text" name="name">
+            </v-text-field>
           </v-col>
         </v-row>
 
@@ -61,7 +51,9 @@
 
     <v-card-text class="headline font-weight-bold">
       <p class="title font-weight-light">Followers: {{profile.followers}}</p>
+      <v-divider></v-divider>
       <p class="title font-weight-light">Repository's: {{profile.public_repos}}</p>
+      <v-divider></v-divider>
     </v-card-text>
 
     <v-card-actions>
@@ -94,11 +86,6 @@
       </v-col>
     </v-row>
   </v-card>
-    
-    
- 
-    
-
     </v-main>
   </v-app>
 </template>
