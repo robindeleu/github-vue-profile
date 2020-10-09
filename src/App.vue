@@ -73,19 +73,8 @@
     </v-card-actions>
     
   </v-card>
-<v-card  v-else
-    class="mx-auto"
-    color="#26c6da"
-    dark
-    max-width="700"
-  >
-   <v-row justify="center">
-      <v-col cols="7">
-        <v-card-title>Please enter a Github username in the texbox below</v-card-title>
-        <v-img  src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"></v-img>
-      </v-col>
-    </v-row>
-  </v-card>
+
+
     </v-main>
   </v-app>
 </template>
@@ -93,16 +82,34 @@
 <script>
 import HelloWorld from './components/HelloWorld';
 import UsersAPI from './api/users';
+//import UserProfileDetails from "@/components/UserProfileDetails";
+/*
+  <UserProfileDetails
+            :name="user.name"
+            :login="user.login"
+            :avatar_url="user.avatar_url"
+            :company="user.company"
+            :followers="user.followers"
+            :publicRepos="user.public_repos"
+            />
+*/
+
 //import axios from 'axios';
 export default {
   name: 'App',
 
+  created() {
+    console.log("Loading user ...");
+    this.fetch();
+  },
+
   components: {
     HelloWorld,
+    //UserProfileDetails,
   },
 
   data: () => ({
-    profile: null,
+    profile: {},
     name: ''
   }),
   
@@ -110,14 +117,16 @@ export default {
     fetch(name){
     console.log("Fetching profile ....");
     console.log(name);
+    setTimeout(() => {
     UsersAPI.getUser(name).then(response => {
         console.log(response);
         this.profile = response.data;
       }).catch(e => {
         console.log(e)
       }
+      
         
-      )
+      )}, 2000)
 /*
       axios.get('http://localhost:3000/users/robindeleu').then(response => {
         console.log(response);
