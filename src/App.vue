@@ -74,7 +74,14 @@
     
   </v-card>
 
-
+      <UserProfileDetails
+            :name="user.name"
+            :login="user.login"
+            :avatar_url="user.avatar_url"
+            :company="user.company"
+            :followers="user.followers"
+            :public_repos="user.public_repos"
+            />
     </v-main>
   </v-app>
 </template>
@@ -82,7 +89,7 @@
 <script>
 import HelloWorld from './components/HelloWorld';
 import UsersAPI from './api/users';
-//import UserProfileDetails from "@/components/UserProfileDetails";
+import UserProfileDetails from "@/components/UserProfileDetails";
 /*
   <UserProfileDetails
             :name="user.name"
@@ -90,7 +97,7 @@ import UsersAPI from './api/users';
             :avatar_url="user.avatar_url"
             :company="user.company"
             :followers="user.followers"
-            :publicRepos="user.public_repos"
+            :public_repos="user.public_repos"
             />
 */
 
@@ -105,7 +112,7 @@ export default {
 
   components: {
     HelloWorld,
-    //UserProfileDetails,
+    UserProfileDetails,
   },
 
   data: () => ({

@@ -1,4 +1,5 @@
 <template>
+
   <v-card
     class="mx-auto"
     color="#26c6da"
@@ -36,16 +37,15 @@
 </template>
 
 <script>
-import AvatarPlaceholder from "@/assets/default-profile-icon.jpg"
+//import AvatarPlaceholder from "@/assets/default-profile-icon.jpg"
 
-//import axios from 'axios';
 export default {
   name: "UserProfileDetails",
 
   props: {
     login: {
       type: String,
-      default: 'John Doe'
+      default: 'John_Doe'
     },
     name: {
       type: String,
@@ -71,6 +71,7 @@ export default {
 
   methods:{
   },
+
   computed: {
     avatar() {
       return this.avatar_url ? this.avatar_url : AvatarPlaceholder;
