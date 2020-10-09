@@ -37,7 +37,21 @@
             </v-text-field>
           </v-col>
         </v-row>
-
+      <v-row justify="center">
+        <v-col cols="6" md="3" lg="3">
+          <v-alert
+            :value="!!error"
+            close-text="Close"
+            color="red"
+            dense
+            dark
+            dismissible
+            elevation="24"
+          >
+            {{ error }}
+          </v-alert>
+        </v-col>
+      </v-row>
       <UserProfileDetails
             :name="profile.name"
             :login="profile.login"
@@ -72,7 +86,7 @@ export default {
 
   created() {
     console.log("Loading user ...");
-    this.fetch();
+    //this.fetch();
   },
 
   components: {
@@ -83,6 +97,7 @@ export default {
   data: () => ({
     profile: {},
     loading: false,
+    error: null,
     name: ''
   }),
   
@@ -97,11 +112,12 @@ export default {
         this.profile = response.data;
         this.loading = false;
       }).catch(e => {
+        this.error = e;
         console.log(e)
       }
       
         
-      )}, 2000)
+      )}, 1000)
 /*
       axios.get('http://localhost:3000/users/robindeleu').then(response => {
         console.log(response);

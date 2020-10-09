@@ -43,7 +43,8 @@
 </template>
 
 <script>
-import AvatarPlaceholder from "@/assets/default-profile-icon.jpg"
+//import AvatarPlaceholder from "@/assets/default-profile-icon.jpg"
+import AvatarPlaceholder from "@/assets/fluppe.png"
 
 export default {
   name: "UserProfileDetails",
@@ -51,15 +52,15 @@ export default {
   props: {
     login: {
       type: String,
-      default: 'John_Doe'
+      default: 'KingFluppe'
     },
     name: {
       type: String,
-      default: 'John Doe'
+      default: 'Filip Van Saksen Coburg '
     },
     company: {
       type: String,
-      default: null
+      default: 'Belgique'
     },
     avatar_url: {
       type: String,
@@ -67,7 +68,7 @@ export default {
     },
     followers: {
       type: Number,
-      default: 0
+      default: 11492641
     },
     public_repos: {
       type: Number,
