@@ -35,6 +35,7 @@
     <v-overlay :value="loading" absolute>
       <v-progress-circular
         indeterminate
+        color="primary"
         size="64"
       ></v-progress-circular>
     </v-overlay>
