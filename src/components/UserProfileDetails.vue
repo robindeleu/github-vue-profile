@@ -32,7 +32,12 @@
         </v-list-item-content>
       </v-list-item>
     </v-card-actions>
-    
+    <v-overlay :value="loading" absolute>
+      <v-progress-circular
+        indeterminate
+        size="64"
+      ></v-progress-circular>
+    </v-overlay>
   </v-card>
 </template>
 
@@ -66,6 +71,10 @@ export default {
     public_repos: {
       type: Number,
       default: 0
+    },
+    loading: {
+      type: [Boolean, String],
+      default: false
     },
   },
 

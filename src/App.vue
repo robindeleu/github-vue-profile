@@ -24,7 +24,7 @@
     <v-main>
       <HelloWorld v-show="false"/>
         <v-row justify="center">
-          <v-col cols="2">
+          <v-col cols="6" md="3" lg="3">
             <v-text-field
             hide-details
             placeholder="Type profile name"
@@ -45,6 +45,7 @@
             :company="profile.company"
             :followers="profile.followers"
             :public_repos="profile.public_repos"
+            :loading="loading"
             />
     </v-main>
   </v-app>
@@ -81,6 +82,7 @@ export default {
 
   data: () => ({
     profile: {},
+    loading: false,
     name: ''
   }),
   
@@ -88,10 +90,12 @@ export default {
     fetch(name){
     console.log("Fetching profile ....");
     console.log(name);
+    this.loading = true;
     setTimeout(() => {
     UsersAPI.getUser(name).then(response => {
         console.log(response);
         this.profile = response.data;
+        this.loading = false;
       }).catch(e => {
         console.log(e)
       }
