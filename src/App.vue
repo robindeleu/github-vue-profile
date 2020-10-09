@@ -38,49 +38,13 @@
           </v-col>
         </v-row>
 
-   
-<v-card  v-if="profile"
-    class="mx-auto"
-    color="#26c6da"
-    dark
-    max-width="400"
-  >
-    <v-card-title>
-      <span class="title font-weight-light">{{ profile.login }}, works @{{profile.company}}</span>
-    </v-card-title>
-
-    <v-card-text class="headline font-weight-bold">
-      <p class="title font-weight-light">Followers: {{profile.followers}}</p>
-      <v-divider></v-divider>
-      <p class="title font-weight-light">Repository's: {{profile.public_repos}}</p>
-      <v-divider></v-divider>
-    </v-card-text>
-
-    <v-card-actions>
-      <v-list-item class="grow">
-        <v-list-item-avatar color="grey darken-3">
-          <v-img
-            class="elevation-6"
-            alt=""
-            :src="profile.avatar_url"
-          ></v-img>
-        </v-list-item-avatar>
-
-        <v-list-item-content>
-          <v-list-item-title>{{profile.name}}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </v-card-actions>
-    
-  </v-card>
-
       <UserProfileDetails
-            :name="user.name"
-            :login="user.login"
-            :avatar_url="user.avatar_url"
-            :company="user.company"
-            :followers="user.followers"
-            :public_repos="user.public_repos"
+            :name="profile.name"
+            :login="profile.login"
+            :avatar_url="profile.avatar_url"
+            :company="profile.company"
+            :followers="profile.followers"
+            :public_repos="profile.public_repos"
             />
     </v-main>
   </v-app>
