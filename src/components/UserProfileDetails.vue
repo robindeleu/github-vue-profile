@@ -37,7 +37,7 @@
 </template>
 
 <script>
-//import AvatarPlaceholder from "@/assets/default-profile-icon.jpg"
+import AvatarPlaceholder from "@/assets/default-profile-icon.jpg"
 
 export default {
   name: "UserProfileDetails",
