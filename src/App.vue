@@ -22,7 +22,6 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld v-show="false"/>
         <v-row justify="center">
           <v-col cols="6" md="3" lg="3">
             <v-text-field
@@ -59,14 +58,26 @@
             :company="profile.company"
             :followers="profile.followers"
             :public_repos="profile.public_repos"
+            :following="profile.following"
             :loading="loading"
             />
+            <v-footer
+      absolute
+      class="font-weight-medium"
+    >
+      <v-col
+        class="text-center"
+        cols="12"
+      >
+        {{ new Date().getFullYear() }} — <strong>Made by Robin Deleu</strong>
+      </v-col>
+    </v-footer>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+
 import UsersAPI from './api/users';
 import UserProfileDetails from "@/components/UserProfileDetails";
 /*
@@ -90,7 +101,6 @@ export default {
   },
 
   components: {
-    HelloWorld,
     UserProfileDetails,
   },
 
@@ -117,7 +127,7 @@ export default {
       }
       
         
-      )}, 1000)
+      )}, 2000)
 /*
       axios.get('http://localhost:3000/users/robindeleu').then(response => {
         console.log(response);

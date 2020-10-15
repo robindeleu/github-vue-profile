@@ -8,13 +8,15 @@
   >
     <v-card-title>
       <span class="title font-weight-light">{{login }}, works @{{company}}</span>
+      
     </v-card-title>
 
     <v-card-text class="headline font-weight-bold">
       <p class="title font-weight-light">Followers: {{followers}}</p>
       <v-divider></v-divider>
-      <p class="title font-weight-light">Repository's: {{public_repos}}</p>
+      <p class="title font-weight-light">Following: {{following}}</p>
       <v-divider></v-divider>
+      <p class="title font-weight-light">Repository's: {{public_repos}}</p>
     </v-card-text>
 
     <v-card-actions>
@@ -69,6 +71,10 @@ export default {
     followers: {
       type: Number,
       default: 11492641
+    },
+    following: {
+      type: Number,
+      default: 1
     },
     public_repos: {
       type: Number,
